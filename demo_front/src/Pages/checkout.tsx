@@ -431,13 +431,13 @@ const Checkout: React.FC = () => {
   return (
     <div className="bg-[#f6f8f7]">
       <section className="border-b border-gray-200 bg-white shadow-[0_1px_0_rgba(0,0,0,0.03)]">
-        <div className="mx-auto max-w-[1480px] px-5 py-8 sm:px-8 lg:px-12 xl:px-16">
+        <div className="mx-auto max-w-[1480px] px-4 py-7 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-            <div>
+            <div className="min-w-0">
               <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-[#00a942]">
                 Checkout seguro
               </p>
-              <h1 className="text-3xl font-black text-gray-950 md:text-4xl">
+              <h1 className="text-2xl font-black leading-tight text-gray-950 sm:text-3xl md:text-4xl">
                 Finaliza tu compra con respaldo Cahuana
               </h1>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-600">
@@ -445,17 +445,17 @@ const Checkout: React.FC = () => {
                 atención especializada para tu pedido.
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-3 text-xs font-bold text-gray-700">
-              <span className="flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00c853]/40 hover:shadow-sm">
-                <ShieldCheck className="h-4 w-4 text-[#00c853]" />
+            <div className="grid w-full grid-cols-1 gap-3 text-xs font-bold text-gray-700 sm:grid-cols-3 lg:w-auto">
+              <span className="flex min-w-0 items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00c853]/40 hover:shadow-sm">
+                <ShieldCheck className="h-4 w-4 shrink-0 text-[#00c853]" />
                 Pago protegido
               </span>
-              <span className="flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00c853]/40 hover:shadow-sm">
-                <Truck className="h-4 w-4 text-[#00c853]" />
+              <span className="flex min-w-0 items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00c853]/40 hover:shadow-sm">
+                <Truck className="h-4 w-4 shrink-0 text-[#00c853]" />
                 Envío nacional
               </span>
-              <span className="flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00c853]/40 hover:shadow-sm">
-                <Package className="h-4 w-4 text-[#00c853]" />
+              <span className="flex min-w-0 items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00c853]/40 hover:shadow-sm">
+                <Package className="h-4 w-4 shrink-0 text-[#00c853]" />
                 Stock verificado
               </span>
             </div>
@@ -463,13 +463,13 @@ const Checkout: React.FC = () => {
         </div>
       </section>
 
-      <main className="mx-auto grid max-w-[1480px] gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:px-12 xl:px-16">
+      <main className="mx-auto grid max-w-[1480px] gap-8 px-4 py-8 sm:px-6 md:px-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:px-12 xl:grid-cols-[minmax(0,1fr)_420px] xl:px-16">
         <form
           ref={formRef}
           className="space-y-6"
           onSubmit={(event) => event.preventDefault()}
         >
-          <section className="rounded-md border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-gray-300 hover:shadow-md">
+          <section className="rounded-md border border-gray-200 bg-white p-4 shadow-sm sm:p-6 transition-all duration-300 hover:border-gray-300 hover:shadow-md">
             <div className="flex flex-col gap-4 border-b border-gray-100 pb-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="text-xl font-black text-gray-950">
@@ -523,7 +523,7 @@ const Checkout: React.FC = () => {
             </div>
           </section>
 
-          <section className="rounded-md border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-gray-300 hover:shadow-md">
+          <section className="rounded-md border border-gray-200 bg-white p-4 shadow-sm sm:p-6 transition-all duration-300 hover:border-gray-300 hover:shadow-md">
             <div className="flex flex-col gap-4 border-b border-gray-100 pb-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="text-xl font-black text-gray-950">
@@ -569,7 +569,7 @@ const Checkout: React.FC = () => {
             </div>
           </section>
 
-          <section className="rounded-md border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-gray-300 hover:shadow-md">
+          <section className="rounded-md border border-gray-200 bg-white p-4 shadow-sm sm:p-6 transition-all duration-300 hover:border-gray-300 hover:shadow-md">
             <div className="flex flex-col gap-4 border-b border-gray-100 pb-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="text-xl font-black text-gray-950">
@@ -619,7 +619,7 @@ const Checkout: React.FC = () => {
             )}
           </section>
 
-          <section className="rounded-md border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-gray-300 hover:shadow-md">
+          <section className="rounded-md border border-gray-200 bg-white p-4 shadow-sm sm:p-6 transition-all duration-300 hover:border-gray-300 hover:shadow-md">
             <h2 className="mb-4 text-xl font-black text-gray-950">
               Productos que también pueden ayudarte
             </h2>
@@ -627,9 +627,9 @@ const Checkout: React.FC = () => {
               {recommendedProducts.map((product) => (
                 <article
                   key={product.name}
-                  className="group flex min-h-[360px] flex-col overflow-hidden rounded-md border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-[#00c853]/30 hover:shadow-xl"
+                  className="group flex min-h-[320px] sm:min-h-[360px] flex-col overflow-hidden rounded-md border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-[#00c853]/30 hover:shadow-xl"
                 >
-                  <div className="relative flex aspect-square items-center justify-center bg-gray-50 p-5">
+                  <div className="relative flex aspect-square items-center justify-center bg-gray-50 p-4 sm:p-5">
                     {product.oldPrice && (
                       <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-bold text-gray-700 shadow-sm">
                         ¡Oferta!
@@ -676,14 +676,14 @@ const Checkout: React.FC = () => {
 
         <aside className="lg:sticky lg:top-6 lg:self-start">
           <section className="overflow-hidden rounded-md border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl">
-            <div className="border-b border-gray-100 bg-gray-950 px-6 py-5 text-white">
+            <div className="border-b border-gray-100 bg-gray-950 px-4 py-5 sm:px-6 text-white">
               <h2 className="text-xl font-black">Tu pedido</h2>
               <p className="mt-1 text-sm text-gray-300">
                 Revisa tu compra antes de confirmar.
               </p>
             </div>
 
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <div className="flex gap-4 border-b border-gray-100 pb-5">
                 <div className="h-20 w-20 shrink-0 rounded-md bg-gray-50 p-2 transition-transform duration-300 hover:scale-105">
                   <img
