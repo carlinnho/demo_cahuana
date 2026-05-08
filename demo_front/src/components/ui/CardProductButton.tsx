@@ -10,16 +10,48 @@ export interface Product {
   discount?: string;
   imageMain: string;
   imageHover?: string;
+  badge?: string;
+  badgeType?: 'discount' | 'new' | 'hot' | 'unspecified';
 }
 
 interface CardProductButtonProps {
   product: Product;
+  onClick?: () => void;
+  className?: string;
 }
 
-const CardProductButton: React.FC<CardProductButtonProps> = ({ product }) => {
+const CardProductButton: React.FC<CardProductButtonProps> = ({ product, onClick, className }) => {
   return (
     // Igualado a CardProducts: Quitamos 'border', 'hover:shadow', usamos 'rounded-none' y 'p-4'
-    <div className="relative group bg-white rounded-none p-4 transition-all duration-300 flex flex-col h-full cursor-pointer">
+    <div
+      className={`relative group bg-white rounded-none p-4 transition-all duration-300 flex flex-col h-full cursor-pointer ${className || ""}`}
+      onClick={onClick}
+    >
+      {/* ── BADGES (Superior Izquierda) ── */}
+      {product.badge && (
+        <div className="absolute top-3 left-3 z-10">
+          <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-md ${product.badgeType === 'discount'
+            ? 'bg-[#42bc0d] text-white'
+            : 'bg-blue-50 text-blue-600 border border-blue-200'
+            }`}>
+            {product.badge}
+          </span>
+        </div>
+      )}
+
+      {/* ── BOTÓN AÑADIR AL CARRITO (Superior Derecha) ── */}
+      <button
+        className="absolute top-3 right-3 z-20 bg-[#42BC0D] text-white p-2.5 rounded-full opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-md hover:bg-[#38a00b]"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log(`Añadido al carrito: ${product.id}`);
+        }}
+        aria-label="Añadir al carrito"
+      >
+        <ShoppingCart size={18} />
+      </button>
+
       {/* ── CONTENEDOR DE IMAGEN ── */}
       <div className="relative w-full aspect-square mb-3 overflow-hidden bg-white flex items-center justify-center rounded-md">
         <img
@@ -41,7 +73,7 @@ const CardProductButton: React.FC<CardProductButtonProps> = ({ product }) => {
           {product.title}
         </h3>
 
-        {/* ── ZONA INFERIOR: PRECIOS + BOTÓN ── */}
+        {/* ── ZONA INFERIOR: PRECIOS ── */}
         <div className="mt-auto flex flex-col gap-3">
           {/* Contenedor de Precios */}
           <div className="flex flex-col">
@@ -62,19 +94,20 @@ const CardProductButton: React.FC<CardProductButtonProps> = ({ product }) => {
               )}
             </div>
           </div>
-
-          {/* ── BOTÓN FIJO AÑADIR AL CARRITO ── */}
-          <button
-            className="w-full bg-[#42BC0D] hover:bg-[#38a00b] text-white py-2.5 rounded-md text-[13px] font-bold transition-colors flex items-center justify-center gap-2 shadow-sm"
-            onClick={(e) => {
-              e.preventDefault();
-              console.log(`Añadido al carrito desde botón: ${product.id}`);
-            }}
-          >
-            <ShoppingCart size={16} />
-            Agregar
-          </button>
         </div>
+
+
+        {/* ── BOTÓN FIJO AÑADIR AL CARRITO ── */}
+        <button
+          className="w-full bg-[#42BC0D] hover:bg-[#38a00b] text-white py-2.5 rounded-md text-[13px] font-bold transition-colors flex items-center justify-center gap-2 shadow-sm"
+          onClick={(e) => {
+            e.preventDefault();
+            console.log(`Añadido al carrito desde botón: ${product.id}`);
+          }}
+        >
+          <ShoppingCart size={16} />
+          Agregar
+        </button>
       </div>
     </div>
   );

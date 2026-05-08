@@ -9,7 +9,7 @@ import {
 import { products, type Product } from "../data/products";
 
 // Icon mapping helper
-const getIcon = (name: string, size = 20, className = "text-[#1b873e]") => {
+const getIcon = (name: string, size = 20, className = "text-[#42bc0d]") => {
   const icons: Record<string, any> = {
     Truck, Clock, ShieldCheck, Heart, ShoppingCart,
     Shield, Minus, Plus, Zap, Battery, Wind, Move, Package, Smartphone, Check
@@ -41,11 +41,11 @@ const DetalleProducto: React.FC = () => {
       {/* Breadcrumbs */}
       <div className="max-w-[1300px] mx-auto px-4 pt-6 pb-4">
         <div className="flex items-center gap-2 text-xs text-gray-500">
-          <Link to="/" className="cursor-pointer hover:text-green-600">Inicio</Link>
+          <Link to="/" className="cursor-pointer hover:text-[#42bc0d]">Inicio</Link>
           <ChevronRight size={12} />
-          <span className="cursor-pointer hover:text-green-600">Accesorios</span>
+          <span className="cursor-pointer hover:text-[#42bc0d]">Accesorios</span>
           <ChevronRight size={12} />
-          <span className="cursor-pointer hover:text-green-600">Ventiladores</span>
+          <span className="cursor-pointer hover:text-[#42bc0d]">Ventiladores</span>
           <ChevronRight size={12} />
           <span className="text-gray-400">{product.name}</span>
         </div>
@@ -54,17 +54,17 @@ const DetalleProducto: React.FC = () => {
       <main className="max-w-[1300px] mx-auto px-4">
 
         {/* Product Top Section */}
-        <div className="flex flex-col lg:flex-row gap-12 mb-12">
+        <div className="flex flex-col lg:flex-row gap-12 mb-12 items-start">
 
           {/* Image Gallery */}
-          <div className="flex-1 flex gap-4">
+          <div className="flex-1 flex gap-4 min-w-0">
             <div className="flex flex-col gap-3 w-20">
               {product.thumbnails.length > 0 ? product.thumbnails.map((img, i) => (
-                <div key={i} className={`aspect-square rounded-md border flex items-center justify-center p-1 cursor-pointer transition-all ${i === 0 ? 'border-green-600' : 'border-gray-200 hover:border-gray-300'}`}>
+                <div key={i} className={`aspect-square rounded-md border flex items-center justify-center p-1 cursor-pointer transition-all ${i === 0 ? 'border-[#42bc0d]' : 'border-gray-200 hover:border-gray-300'}`}>
                   <img src={img} alt={`Thumbnail ${i}`} className="w-full h-full object-contain" />
                 </div>
               )) : (
-                <div className="aspect-square rounded-md border border-green-600 flex items-center justify-center p-1 cursor-pointer">
+                <div className="aspect-square rounded-md border border-[#42bc0d] flex items-center justify-center p-1 cursor-pointer">
                   <img src={product.mainImage} alt="Main Thumbnail" className="w-full h-full object-contain" />
                 </div>
               )}
@@ -83,7 +83,7 @@ const DetalleProducto: React.FC = () => {
 
               {/* Battery tag if exists */}
               {product.id === "1" && (
-                <div className="absolute bottom-8 left-8 z-10 flex flex-col items-center gap-1 text-[#1b873e]">
+                <div className="absolute bottom-8 left-8 z-10 flex flex-col items-center gap-1 text-[#42bc0d]">
                   <Battery size={36} strokeWidth={1.5} />
                   <span className="text-sm font-bold">5000mAh</span>
                 </div>
@@ -98,9 +98,9 @@ const DetalleProducto: React.FC = () => {
           </div>
 
           {/* Product Info & Actions */}
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col min-w-0">
             <div className="mb-3">
-              <span className="bg-[#e8f5e9] text-[#1b873e] text-[11px] font-semibold px-2.5 py-1 rounded-full">¡Oferta!</span>
+              <span className="bg-[#f1fbe9] text-[#42bc0d] text-[11px] font-semibold px-2.5 py-1 rounded-full">¡Oferta!</span>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 leading-tight mb-3">
               {product.name}
@@ -108,14 +108,14 @@ const DetalleProducto: React.FC = () => {
 
             <div className="flex items-baseline gap-3 mb-6">
               <span className="text-lg text-gray-400 line-through font-medium">S/ {product.oldPrice}</span>
-              <span className="text-4xl font-bold text-[#1b873e]">S/ {product.price}</span>
+              <span className="text-4xl font-bold text-[#42bc0d]">S/ {product.price}</span>
               <span className="bg-[#ff0000] text-white text-[11px] font-bold px-2 py-0.5 rounded-full ml-1">{product.discount}</span>
             </div>
 
             <div className="flex items-center gap-2 mb-8 text-sm">
-              <Check size={18} className="text-[#1b873e]" />
+              <Check size={18} className="text-[#42bc0d]" />
               <span className="font-semibold text-gray-800">Disponibilidad:</span>
-              <span className="text-[#1b873e] font-medium">{product.stock} disponibles</span>
+              <span className="text-[#42bc0d] font-medium">{product.stock} disponibles</span>
             </div>
 
             <div className="flex gap-3 mb-4">
@@ -124,13 +124,13 @@ const DetalleProducto: React.FC = () => {
                 <span className="flex-1 flex items-center justify-center font-semibold text-gray-800">{quantity}</span>
                 <button onClick={() => setQuantity(quantity + 1)} className="w-10 h-full flex items-center justify-center text-gray-500 hover:bg-gray-50"><Plus size={16} /></button>
               </div>
-              <button className="flex-1 bg-[#1b873e] hover:bg-[#156e32] transition-colors text-white font-semibold text-sm rounded-md flex items-center justify-center gap-2 h-12">
+              <button className="flex-1 bg-[#42bc0d] hover:bg-[#369b0a] transition-colors text-white font-semibold text-sm rounded-md flex items-center justify-center gap-2 h-12">
                 <ShoppingCart size={18} />
                 Agregar al carrito
               </button>
             </div>
 
-            <button className="w-full border border-[#1b873e] bg-white text-[#1b873e] hover:bg-green-50 transition-colors font-semibold text-sm rounded-md py-3 mb-8 flex items-center justify-center gap-2">
+            <button className="w-full border border-[#42bc0d] bg-white text-[#42bc0d] hover:bg-[#f1fbe9] transition-colors font-semibold text-sm rounded-md py-3 mb-8 flex items-center justify-center gap-2">
               <Zap size={18} />
               Comprar ahora
             </button>
@@ -138,10 +138,10 @@ const DetalleProducto: React.FC = () => {
             {/* Trust Info */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-t border-gray-200">
               {[
-                { label: "Envíos a todo\nel Perú", icon: <Truck size={22} className="text-[#1b873e]" /> },
-                { label: "Entrega en\n72 horas*", icon: <Clock size={22} className="text-[#1b873e]" /> },
-                { label: "Compra segura\nSSL protegida", icon: <ShieldCheck size={22} className="text-[#1b873e]" /> },
-                { label: "Garantía de\n6 meses", icon: <Shield size={22} className="text-[#1b873e]" /> }
+                { label: "Envíos a todo\nel Perú", icon: <Truck size={22} className="text-[#42bc0d]" /> },
+                { label: "Entrega en\n72 horas*", icon: <Clock size={22} className="text-[#42bc0d]" /> },
+                { label: "Compra segura\nSSL protegida", icon: <ShieldCheck size={22} className="text-[#42bc0d]" /> },
+                { label: "Garantía de\n6 meses", icon: <Shield size={22} className="text-[#42bc0d]" /> }
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-2">
                   <div className="mt-0.5">{item.icon}</div>
@@ -149,6 +149,22 @@ const DetalleProducto: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            {/* Payment Methods */}
+            <div className="mt-2 pt-6 border-t border-gray-100">
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-4">Medios de pago aceptados</span>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-4 opacity-50 hover:opacity-100 transition-opacity duration-300">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-3 w-auto" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-6 w-auto" />
+                <img src="https://logodownload.org/wp-content/uploads/2021/11/bbva-logo.png" alt="BBVA" className="h-3 w-auto" />
+                <span className="text-[12px] font-black text-blue-900 tracking-tighter leading-none">BCP</span>
+                <div className="flex items-center gap-2">
+                  <div className="px-2 py-0.5 rounded bg-[#5d2e8e] text-white text-[9px] font-bold shadow-sm">Yape</div>
+                  <div className="px-2 py-0.5 rounded bg-[#00d1c1] text-white text-[9px] font-bold shadow-sm">Plin</div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -171,7 +187,7 @@ const DetalleProducto: React.FC = () => {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`pb-4 text-sm font-semibold relative transition-colors ${activeTab === tab ? 'text-[#1b873e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#1b873e]' : 'text-gray-500 hover:text-gray-800'}`}
+              className={`pb-4 text-sm font-semibold relative transition-colors ${activeTab === tab ? 'text-[#42bc0d] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#42bc0d]' : 'text-gray-500 hover:text-gray-800'}`}
             >
               {tab}
             </button>
@@ -200,7 +216,7 @@ const DetalleProducto: React.FC = () => {
             </div>
             <div className="flex-1 w-full lg:w-auto relative rounded-2xl overflow-hidden">
               <img src={product.description.image} alt="Product description" className="w-full h-auto object-cover" />
-              <div className="absolute top-1/2 left-8 -translate-y-1/2 flex flex-col items-center justify-center text-white bg-[#1b873e] w-24 h-24 rounded-full shadow-lg">
+              <div className="absolute top-1/2 left-8 -translate-y-1/2 flex flex-col items-center justify-center text-white bg-[#42bc0d] w-24 h-24 rounded-full shadow-lg">
                 <span className="text-2xl font-bold">{product.description.badgeValue}</span>
                 <span className="text-[10px] font-semibold">{product.description.badgeLabel}</span>
               </div>
@@ -216,7 +232,7 @@ const DetalleProducto: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-6">
                   <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm text-[#1b873e] shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm text-[#42bc0d] shrink-0">
                       <Zap size={24} />
                     </div>
                     <div>
@@ -225,7 +241,7 @@ const DetalleProducto: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm text-[#1b873e] shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm text-[#42bc0d] shrink-0">
                       <Wind size={24} />
                     </div>
                     <div>
@@ -236,7 +252,7 @@ const DetalleProducto: React.FC = () => {
                 </div>
                 <div className="space-y-6">
                   <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm text-[#1b873e] shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm text-[#42bc0d] shrink-0">
                       <Shield size={24} />
                     </div>
                     <div>
@@ -245,7 +261,7 @@ const DetalleProducto: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm text-[#1b873e] shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm text-[#42bc0d] shrink-0">
                       <Move size={24} />
                     </div>
                     <div>
@@ -296,25 +312,25 @@ const DetalleProducto: React.FC = () => {
               {relatedProducts.map((p, i) => (
                 <Link to={`/producto/${p.id}`} key={i} className="bg-white rounded-lg p-4 border border-gray-200 flex flex-col group hover:shadow-lg transition-shadow">
                   <div className="relative aspect-square rounded-md bg-gray-50 flex items-center justify-center p-4 mb-4">
-                    <span className="absolute top-2 left-2 z-10 bg-[#1b873e] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{p.discount}</span>
+                    <span className="absolute top-2 left-2 z-10 bg-[#42bc0d] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{p.discount}</span>
                     <button className="absolute top-2 right-2 z-10 text-gray-400 hover:text-red-500" onClick={(e) => { e.preventDefault(); /* Like logic */ }}><Heart size={18} /></button>
                     <img src={p.mainImage} alt={p.name} className="max-h-full max-w-full object-contain" />
                   </div>
                   <h4 className="text-xs font-semibold text-gray-800 leading-snug mb-2 line-clamp-2 h-8">{p.name}</h4>
                   <div className="mt-auto">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="text-sm font-bold text-[#1b873e]">S/ {p.price}</span>
+                      <span className="text-sm font-bold text-[#42bc0d]">S/ {p.price}</span>
                       <span className="text-[10px] text-gray-400 line-through">S/ {p.oldPrice}</span>
                     </div>
-                    <button className="w-full py-1.5 bg-white border border-[#1b873e] text-[#1b873e] hover:bg-[#1b873e] hover:text-white transition-colors text-xs font-semibold rounded-md">Agregar</button>
+                    <button className="w-full py-1.5 bg-white border border-[#42bc0d] text-[#42bc0d] hover:bg-[#42bc0d] hover:text-white transition-colors text-xs font-semibold rounded-md">Agregar</button>
                   </div>
                 </Link>
               ))}
             </div>
 
             <div className="absolute top-0 right-0 flex gap-2">
-              <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-[#1b873e] hover:text-[#1b873e] bg-white"><ChevronLeft size={16} /></button>
-              <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-[#1b873e] hover:text-[#1b873e] bg-white"><ChevronRight size={16} /></button>
+              <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-[#42bc0d] hover:text-[#42bc0d] bg-white"><ChevronLeft size={16} /></button>
+              <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-[#42bc0d] hover:text-[#42bc0d] bg-white"><ChevronRight size={16} /></button>
             </div>
           </div>
         )}

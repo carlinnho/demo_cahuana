@@ -2,10 +2,11 @@ import React from "react";
 import {
   Truck, Clock, ChevronDown, Search, ArrowRight,
   ChevronRight, Shield, Home as HomeIcon, Check,
-  ShoppingCart, Heart, Grid, List
+  Grid, List
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { products } from "../data/products";
+import CardProductButton from "../components/ui/CardProductButton";
 
 const Catalogo: React.FC = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const Catalogo: React.FC = () => {
           <ChevronRight size={12} className="text-gray-400" />
           <span className="cursor-pointer hover:text-gray-800">Accesorios</span>
           <ChevronRight size={12} className="text-gray-400" />
-          <span className="text-[#1b873e]">Accesorios para laptop</span>
+          <span className="text-[#42bc0d]">Accesorios para laptop</span>
         </div>
 
         {/* Hero Banner */}
@@ -75,17 +76,17 @@ const Catalogo: React.FC = () => {
 
           <div className="absolute bottom-6 right-6 z-20 gap-6 bg-black/40 backdrop-blur-md p-4 rounded-xl border border-white/10 hidden lg:flex shadow-lg">
             <div className="flex items-center gap-3 text-white">
-              <Truck size={20} className="text-green-400" />
+              <Truck size={20} className="text-[#42bc0d]" />
               <span className="text-xs font-medium leading-snug">Envíos rápidos <br /> a todo el Perú</span>
             </div>
             <div className="w-px h-8 bg-white/20 self-center"></div>
             <div className="flex items-center gap-3 text-white">
-              <Shield size={20} className="text-green-400" />
+              <Shield size={20} className="text-[#42bc0d]" />
               <span className="text-xs font-medium leading-snug">Compra segura <br /> y protegida</span>
             </div>
             <div className="w-px h-8 bg-white/20 self-center"></div>
             <div className="flex items-center gap-3 text-white">
-              <Clock size={20} className="text-green-400" />
+              <Clock size={20} className="text-[#42bc0d]" />
               <span className="text-xs font-medium leading-snug">Garantía <br /> 6 meses</span>
             </div>
           </div>
@@ -100,7 +101,7 @@ const Catalogo: React.FC = () => {
           <aside className="w-full lg:w-[260px] flex-shrink-0">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-bold text-gray-900">Filtros</h2>
-              <button className="text-sm font-semibold text-[#1b873e] hover:underline">Limpiar todo</button>
+              <button className="text-sm font-semibold text-[#42bc0d] hover:underline">Limpiar todo</button>
             </div>
 
             {/* Categorías */}
@@ -112,10 +113,10 @@ const Catalogo: React.FC = () => {
               <ul className="space-y-2.5">
                 {categories.map((cat, idx) => (
                   <li key={idx} className="flex items-center gap-3 text-sm group cursor-pointer">
-                    <div className={`w-4 h-4 rounded flex items-center justify-center border transition-colors ${cat.active ? 'bg-[#1b873e] border-[#1b873e]' : 'border-gray-300 group-hover:border-[#1b873e]'}`}>
+                    <div className={`w-4 h-4 rounded flex items-center justify-center border transition-colors ${cat.active ? 'bg-[#42bc0d] border-[#42bc0d]' : 'border-gray-300 group-hover:border-[#42bc0d]'}`}>
                       {cat.active && <Check size={12} className="text-white" strokeWidth={3} />}
                     </div>
-                    <span className={`flex-1 ${cat.active ? 'text-[#1b873e] font-medium' : 'text-gray-600 group-hover:text-gray-900'}`}>
+                    <span className={`flex-1 ${cat.active ? 'text-[#42bc0d] font-medium' : 'text-gray-600 group-hover:text-gray-900'}`}>
                       {cat.name}
                     </span>
                     <span className="text-gray-400 text-xs">({cat.count})</span>
@@ -136,14 +137,14 @@ const Catalogo: React.FC = () => {
                 <input
                   type="text"
                   placeholder="Buscar marca"
-                  className="w-full border border-gray-200 rounded-lg py-2 pl-8 pr-3 text-sm outline-none focus:border-[#1b873e] transition-colors"
+                  className="w-full border border-gray-200 rounded-lg py-2 pl-8 pr-3 text-sm outline-none focus:border-[#42bc0d] transition-colors"
                 />
                 <Search size={14} className="text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
               </div>
               <ul className="space-y-2.5 mb-2">
                 {brands.map((brand, idx) => (
                   <li key={idx} className="flex items-center gap-3 text-sm group cursor-pointer">
-                    <div className="w-4 h-4 rounded border border-gray-300 group-hover:border-[#1b873e] transition-colors"></div>
+                    <div className="w-4 h-4 rounded border border-gray-300 group-hover:border-[#42bc0d] transition-colors"></div>
                     <span className="flex-1 text-gray-600 group-hover:text-gray-900">
                       {brand.name}
                     </span>
@@ -151,7 +152,7 @@ const Catalogo: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <button className="text-sm font-semibold text-[#1b873e] hover:underline mt-1">Ver más</button>
+              <button className="text-sm font-semibold text-[#42bc0d] hover:underline mt-1">Ver más</button>
             </div>
 
             <div className="h-px bg-gray-200 w-full mb-6"></div>
@@ -165,9 +166,9 @@ const Catalogo: React.FC = () => {
 
               <div className="px-2 mb-4 mt-2">
                 <div className="h-1 bg-gray-200 rounded-full relative">
-                  <div className="absolute left-[15%] right-[30%] h-full bg-[#1b873e] rounded-full"></div>
-                  <div className="absolute left-[15%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-[#1b873e] rounded-full border-2 border-white shadow-sm cursor-pointer"></div>
-                  <div className="absolute right-[30%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-[#1b873e] rounded-full border-2 border-white shadow-sm cursor-pointer"></div>
+                  <div className="absolute left-[15%] right-[30%] h-full bg-[#42bc0d] rounded-full"></div>
+                  <div className="absolute left-[15%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-[#42bc0d] rounded-full border-2 border-white shadow-sm cursor-pointer"></div>
+                  <div className="absolute right-[30%] top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-[#42bc0d] rounded-full border-2 border-white shadow-sm cursor-pointer"></div>
                 </div>
               </div>
 
@@ -192,7 +193,7 @@ const Catalogo: React.FC = () => {
               </div>
               <div className="flex justify-between items-center">
                 <h3 className="font-bold text-sm text-gray-800">Stock disponible</h3>
-                <div className="w-8 h-4.5 bg-[#1b873e] rounded-full relative cursor-pointer">
+                <div className="w-8 h-4.5 bg-[#42bc0d] rounded-full relative cursor-pointer">
                   <div className="absolute right-0.5 top-0.5 w-3.5 h-3.5 bg-white rounded-full shadow-sm"></div>
                 </div>
               </div>
@@ -216,7 +217,7 @@ const Catalogo: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-1 border border-gray-200 rounded-lg p-1 bg-white">
-                  <div className="p-1.5 bg-[#1b873e] text-white rounded cursor-pointer">
+                  <div className="p-1.5 bg-[#42bc0d] text-white rounded cursor-pointer">
                     <Grid size={16} />
                   </div>
                   <div className="p-1.5 text-gray-400 hover:text-gray-600 cursor-pointer transition-colors">
@@ -229,73 +230,22 @@ const Catalogo: React.FC = () => {
             {/* Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 lg:grid-cols-3 gap-5 mb-8">
               {products.map((product) => (
-                <div
+                <CardProductButton
                   key={product.id}
+                  product={{
+                    id: product.id,
+                    brand: product.brand,
+                    title: product.name,
+                    price: parseFloat(product.price),
+                    oldPrice: product.oldPrice ? parseFloat(product.oldPrice) : undefined,
+                    discount: product.discount,
+                    imageMain: product.mainImage,
+                    badge: product.badge,
+                    badgeType: product.badgeType,
+                  }}
                   onClick={() => handleProductClick(product.id)}
-                  className="bg-white rounded-xl border border-gray-200 p-4 hover:border-[#1b873e] hover:shadow-lg transition-all duration-300 group relative flex flex-col h-full cursor-pointer"
-                >
-
-                  {/* Badges */}
-                  {product.badge && (
-                    <div className="absolute top-4 left-4 z-10">
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${product.badgeType === 'discount' ? 'bg-[#1b873e] text-white' : 'bg-blue-50 text-blue-600 border border-blue-200'
-                        }`}>
-                        {product.badge}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Favorite */}
-                  <button
-                    onClick={(e) => e.stopPropagation()}
-                    className="absolute top-4 right-4 z-10 text-gray-300 hover:text-red-500 transition-colors"
-                  >
-                    <Heart size={20} />
-                  </button>
-
-                  {/* Image */}
-                  <div className="h-[160px] flex items-center justify-center mb-4 mt-2">
-                    <img src={product.mainImage} alt={product.name} className="max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" />
-                  </div>
-
-                  {/* Info */}
-                  <div className="flex flex-col flex-1">
-                    <span className="text-[11px] font-semibold text-gray-400 mb-1 tracking-wider uppercase">{product.brand}</span>
-                    <h3 className="text-sm font-bold text-gray-800 leading-snug mb-2 line-clamp-2 min-h-[40px] group-hover:text-[#1b873e] transition-colors">
-                      {product.name}
-                    </h3>
-
-
-
-                    <div className="mt-auto">
-                      {/* Price */}
-                      <div className="flex items-end gap-2 mb-1 h-6">
-                        {product.oldPrice ? (
-                          <>
-                            <span className="text-xs text-gray-400 line-through font-medium mb-[2px]">S/ {product.oldPrice}</span>
-                            <span className="text-[17px] font-bold text-gray-900 leading-none">S/ {product.price}</span>
-                          </>
-                        ) : (
-                          <span className="text-[17px] font-bold text-gray-900 leading-none">S/ {product.price}</span>
-                        )}
-                      </div>
-
-                      {/* Delivery */}
-                      <p className="text-xs font-bold text-[#1b873e] mb-4 h-4">
-                        {product.deliveryInfo || "Envío disponible"}
-                      </p>
-
-                      {/* Add to cart */}
-                      <button
-                        onClick={(e) => e.stopPropagation()}
-                        className="w-full py-2 border border-[#1b873e] text-[#1b873e] rounded-lg flex items-center justify-center gap-2 hover:bg-[#1b873e] hover:text-white transition-colors font-bold text-sm"
-                      >
-                        <ShoppingCart size={16} />
-                        Agregar al carrito
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                  className="border border-gray-200 hover:border-[#42bc0d] hover:shadow-lg rounded-xl"
+                />
               ))}
             </div>
 
@@ -304,7 +254,7 @@ const Catalogo: React.FC = () => {
               <button className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-700 transition-colors">
                 <ChevronRight size={16} className="rotate-180" />
               </button>
-              <button className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#1b873e] text-white font-medium text-sm shadow-sm">1</button>
+              <button className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#42bc0d] text-white font-medium text-sm shadow-sm">1</button>
               <button className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100 font-medium text-sm transition-colors">2</button>
               <button className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100 font-medium text-sm transition-colors">3</button>
               <button className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-700 transition-colors">
@@ -326,12 +276,12 @@ const Catalogo: React.FC = () => {
             <span className="font-bold text-xl text-orange-500">xiaomi</span>
             <span className="font-bold text-2xl text-red-600 italic">JBL</span>
             <span className="font-bold text-xl text-blue-500">ANKER</span>
-            <span className="font-bold text-2xl text-green-600 italic">acer</span>
+            <span className="font-bold text-2xl text-[#42bc0d] italic">acer</span>
             <span className="font-bold text-xl text-blue-800">ASUS</span>
             <span className="font-bold text-xl text-blue-600">DELL</span>
             <span className="font-bold text-xl text-blue-700">SAMSUNG</span>
           </div>
-          <button className="text-sm font-bold text-[#1b873e] whitespace-nowrap flex items-center gap-1 hover:underline">
+          <button className="text-sm font-bold text-[#42bc0d] whitespace-nowrap flex items-center gap-1 hover:underline">
             Ver todas <ArrowRight size={14} />
           </button>
         </div>
