@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import CardProducts, { type Product } from "../ui/CardProducts";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import { Link } from "react-router-dom";
 interface Props {
   title: string;
 }
@@ -95,12 +95,13 @@ const ProductCarousel: React.FC<Props> = ({ title }) => {
         <h2 className="text-[24px] font-black text-[#313131] tracking-tight">
           {title}
         </h2>
-        <a
-          href="#"
+        {/* ── ENLACE AL CATÁLOGO ── */}
+        <Link
+          to="/catalogo"
           className="text-[#42BC0D] font-bold text-[14px] hover:underline hidden sm:block"
         >
           Ver todos
-        </a>
+        </Link>
       </div>
 
       {/* ── BOTONES DE NAVEGACIÓN ── */}

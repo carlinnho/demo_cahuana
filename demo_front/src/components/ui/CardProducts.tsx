@@ -1,5 +1,6 @@
 import React from "react";
 import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom"; // <-- Importar
 
 export interface Product {
   id: string | number;
@@ -18,13 +19,16 @@ interface CardProductsProps {
 
 const CardProducts: React.FC<CardProductsProps> = ({ product }) => {
   return (
-    // Quitamos 'border', 'border-gray-200' y cambiamos a 'rounded-none'
-    <div className="relative group bg-white rounded-none p-4 transition-all duration-300 flex flex-col h-full cursor-pointer">
+    // ── CAMBIO: <div> ahora es <Link> apuntando a /producto/:id ──
+    <Link
+      to={`/producto/${product.id}`}
+      className="relative group bg-white rounded-none p-4 transition-all duration-300 flex-col h-full cursor-pointer block"
+    >
       {/* ── BOTÓN AÑADIR AL CARRITO ── */}
       <button
         className="absolute top-2.5 right-2.5 z-20 bg-[#42BC0D] text-white p-2 rounded-full opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-md hover:bg-[#38a00b]"
         onClick={(e) => {
-          e.preventDefault();
+          e.preventDefault(); // <-- Esto evita que el <Link> padre se dispare
           console.log(`Añadido al carrito: ${product.id}`);
         }}
         aria-label="Añadir al carrito"
@@ -43,24 +47,19 @@ const CardProducts: React.FC<CardProductsProps> = ({ product }) => {
 
       {/* ── INFORMACIÓN DEL PRODUCTO ── */}
       <div className="flex flex-col grow">
-        {/* Marca */}
         <span className="text-gray-500 text-[12px] font-normal mb-1">
           {product.brand}
         </span>
-
-        {/* Título */}
         <h3 className="font-bold text-[#313131] text-[13px] leading-snug mb-3 line-clamp-2 min-h-[38px]">
           {product.title}
         </h3>
 
-        {/* ── PRECIOS ── */}
         <div className="mt-auto flex flex-col">
           {product.oldPrice && (
             <span className="text-gray-600 line-through text-[12px] mb-0.5">
               S/{product.oldPrice.toFixed(2)}
             </span>
           )}
-
           <div className="flex items-baseline gap-1.5">
             <span className="text-[#42BC0D] font-bold text-[20px]">
               S/{product.price.toFixed(2)}
@@ -73,7 +72,7 @@ const CardProducts: React.FC<CardProductsProps> = ({ product }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -7,7 +7,6 @@ import PromoTripleBanners from "../components/home/PromoTripleBanners";
 import SolutionsBanners from "../components/home/SolutionsBanners";
 import B2BCta from "../components/home/B2BCta";
 import BrandsSection from "../components/home/brandsSection";
-import Testimonials from "../components/home/Testimonials";
 
 const Home: React.FC = () => {
   return (
@@ -45,9 +44,6 @@ const Home: React.FC = () => {
 
         {/* 10. Marcas (Pendiente a definir el nuevo diseño) */}
         <BrandsSection />
-
-        {/* 11. Testimonios */}
-        <Testimonials />
       </div>
     </div>
   );

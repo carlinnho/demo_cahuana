@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -22,6 +23,7 @@ import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa6";
 import logoCahuana from "../assets/logocahuana.png";
 import CategoriaMenu from "./CategoriaMenu";
 import Carrito from "./carrito";
+import BuscadorHeader from "./BuscadorHeader"; // <-- Importamos nuestro nuevo componente
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +31,8 @@ const Header: React.FC = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const cartCount = 3;
 
@@ -50,50 +54,61 @@ const Header: React.FC = () => {
     },
   ];
 
-  // Convertimos tu lista en objetos para asignarles la ruta a cada uno
-  const navItems = [
-    { name: "Repuestos", path: "/catalogo" },
-    { name: "Accesorios", path: "/catalogo" },
-    { name: "Vehículos", path: "/catalogo" },
-    { name: "Servicios de Importacion", path: "/" },
-    { name: "Ventas Corporativas", path: "/b2b" }, // <-- Aquí enlazamos tu nueva página
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 30) setIsScrolled(true);
+      else setIsScrolled(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="w-full font-sans border-b border-gray-100">
-      {/* ── BARRA SUPERIOR INFO (solo desktop lg+) ── */}
-      <div className="bg-[#F4F6FB] text-[#313131] text-[12px] font-normal py-1.5 px-4 hidden lg:flex justify-between items-center border-b border-gray-200">
-        <div className="flex gap-5">
-          <span className="flex items-center gap-1.5">
-            <Truck size={14} /> Envíos a Todo el Perú
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Lock size={14} /> Compra 100% segura
-          </span>
-          <span className="flex items-center gap-1.5">
-            <ShieldCheck size={14} /> Garantía de 6 meses
-          </span>
-        </div>
-        <div className="flex gap-3 items-center">
-          <a href="#" className="hover:text-[#42BC0D] transition-colors">
-            <FaFacebook size={14} />
-          </a>
-          <a href="#" className="hover:text-[#42BC0D] transition-colors">
-            <FaInstagram size={14} />
-          </a>
-          <a href="#" className="hover:text-[#42BC0D] transition-colors">
-            <FaTiktok size={14} />
-          </a>
-        </div>
-      </div>
-      {/* ── CONTENEDOR STICKY ── */}
-      <div className="sticky top-0 z-50 w-full bg-white shadow-sm">
-        {/* ════ BARRA MOBILE + TABLET (< lg): [☰]  [LOGO]  [🔍] ════ */}
+    <header className="sticky top-0 z-50 w-full font-sans bg-white border-b border-gray-100 shadow-sm">
+      {/* ── BARRA SUPERIOR INFO (Animada) ── */}
+      <AnimatePresence>
+        {!isScrolled && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="hidden lg:block overflow-hidden bg-[#F4F6FB] border-b border-gray-200 relative z-10"
+          >
+            <div className="flex justify-between items-center py-1.5 px-4 text-[#313131] text-[12px] font-normal">
+              <div className="flex gap-5">
+                <span className="flex items-center gap-1.5">
+                  <Truck size={14} /> Envíos a Todo el Perú
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Lock size={14} /> Compra 100% segura
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <ShieldCheck size={14} /> Garantía de 6 meses
+                </span>
+              </div>
+              <div className="flex gap-3 items-center">
+                <a href="#" className="hover:text-[#42BC0D] transition-colors">
+                  <FaFacebook size={14} />
+                </a>
+                <a href="#" className="hover:text-[#42BC0D] transition-colors">
+                  <FaInstagram size={14} />
+                </a>
+                <a href="#" className="hover:text-[#42BC0D] transition-colors">
+                  <FaTiktok size={14} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div>
+        {/* ════ BARRA MOBILE + TABLET ════ */}
         <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-gray-100 relative">
           <button
             onClick={() => setIsMenuOpen(true)}
             className="text-[#313131] hover:text-[#42BC0D] transition-colors p-1"
-            aria-label="Abrir menú"
           >
             <Menu size={24} />
           </button>
@@ -109,14 +124,13 @@ const Header: React.FC = () => {
           <button
             onClick={() => setIsMobileSearchOpen((v) => !v)}
             className="text-[#313131] hover:text-[#42BC0D] transition-colors p-1"
-            aria-label="Buscar"
           >
             <Search size={22} />
           </button>
         </div>
         {/* Buscador expandible (mobile + tablet) */}
         {isMobileSearchOpen && (
-          <div className="lg:hidden px-4 pb-3 pt-1 border-b border-gray-100">
+          <div className="lg:hidden px-4 pb-3 pt-1 border-b border-gray-100 bg-white">
             <div className="relative">
               <input
                 autoFocus
@@ -132,9 +146,8 @@ const Header: React.FC = () => {
           </div>
         )}
 
-        {/* ════ BARRA DESKTOP (≥ lg) FIX OVERLAP ════ */}
-        <div className="hidden lg:flex py-4 px-4 xl:px-8 items-center justify-between gap-4 xl:gap-8 max-w-[1600px] mx-auto">
-          {/* IZQUIERDA: Uso de shrink-0 para evitar que el input lo aplaste */}
+        {/* ════ BARRA DESKTOP ════ */}
+        <div className="hidden lg:flex py-4 px-4 xl:px-8 items-center justify-between gap-4 xl:gap-8 max-w-[1600px] mx-auto bg-white">
           <div className="flex items-center gap-4 xl:gap-6 shrink-0">
             <a href="/" className="shrink-0">
               <img
@@ -156,21 +169,11 @@ const Header: React.FC = () => {
             />
           </div>
 
-          {/* CENTRO: Buscador ocupa el espacio sobrante con flex-1 */}
+          {/* ── CENTRO: AQUI LLAMAMOS A NUESTRO NUEVO COMPONENTE ── */}
           <div className="flex-1 flex justify-center max-w-3xl px-2 xl:px-4">
-            <div className="w-full relative">
-              <input
-                type="text"
-                placeholder="Buscar productos, marcas y más..."
-                className="w-full border border-gray-300 rounded-full py-2.5 px-5 pr-12 text-[14px] font-medium text-[#313131] focus:outline-none focus:ring-1 focus:ring-[#42BC0D] focus:border-transparent placeholder:text-gray-400"
-              />
-              <button className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#42BC0D] transition-colors">
-                <Search size={18} />
-              </button>
-            </div>
+            <BuscadorHeader />
           </div>
 
-          {/* DERECHA: Acciones (shrink-0 para que mantenga su tamaño) */}
           <div className="flex items-center gap-4 xl:gap-6 text-[#313131] shrink-0 justify-end">
             <div className="flex items-center gap-2 cursor-pointer hover:text-[#42BC0D] transition-colors">
               <User size={22} className="text-black" />
@@ -204,19 +207,24 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* ── NAVBAR VERDE (solo desktop lg+) ── */}
+        {/* ── NAVBAR VERDE DESKTOP ── */}
         <nav className="bg-[#42BC0D] text-white overflow-x-auto whitespace-nowrap scrollbar-hide hidden lg:block">
           <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-8 py-1 text-[14px] font-medium">
+            {/* Añadimos la propiedad 'path' al arreglo */}
             {[
-              { name: "Repuestos", hasDropdown: true },
-              { name: "Accesorios", hasDropdown: true },
-              { name: "Vehículos", hasDropdown: true },
-              { name: "Servicios de Importacion", hasDropdown: false },
-              { name: "Ventas Corporativas", hasDropdown: false },
+              { name: "Repuestos", hasDropdown: true, path: "#" },
+              { name: "Accesorios", hasDropdown: true, path: "#" },
+              { name: "Vehículos", hasDropdown: true, path: "#" },
+              {
+                name: "Servicios de Importacion",
+                hasDropdown: false,
+                path: "#",
+              },
+              { name: "Ventas Corporativas", hasDropdown: false, path: "/b2b" }, // <-- Ruta B2B
             ].map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href="#"
+                to={item.path}
                 className="flex items-center gap-1 hover:bg-black/10 px-3 py-1.5 rounded-md transition-all group"
               >
                 {item.name}
@@ -226,7 +234,7 @@ const Header: React.FC = () => {
                     className="group-hover:translate-y-0.5 transition-transform"
                   />
                 )}
-              </a>
+              </Link>
             ))}
           </div>
         </nav>
@@ -235,7 +243,6 @@ const Header: React.FC = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <>
-              {/* Overlay */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -245,7 +252,6 @@ const Header: React.FC = () => {
                 onClick={() => setIsMenuOpen(false)}
               />
 
-              {/* Panel deslizante desde la izquierda */}
               <motion.div
                 initial={{ x: "-100%" }}
                 animate={{ x: 0 }}
@@ -267,7 +273,6 @@ const Header: React.FC = () => {
                     <X size={22} />
                   </button>
                 </div>
-
                 {/* 2 botones: Sesión + Carrito */}
                 <div className="px-4 py-3 flex gap-3 border-b border-gray-100">
                   <a
@@ -292,7 +297,6 @@ const Header: React.FC = () => {
                     )}
                   </button>
                 </div>
-
                 {/* Categorías con acordeón */}
                 <div className="flex-1 py-2">
                   <p className="px-4 py-2 text-[11px] font-black text-gray-400 uppercase tracking-wider">
@@ -341,7 +345,7 @@ const Header: React.FC = () => {
                     </div>
                   ))}
 
-                  {/* Resto de nav */}
+                  {/* Resto de nav (Mobile) */}
                   <div className="border-t border-gray-100 mt-2 pt-2">
                     <a
                       href="#"
@@ -349,15 +353,17 @@ const Header: React.FC = () => {
                     >
                       Servicios de Importación
                     </a>
-                    <a
-                      href="#"
+                    {/* ── ENLACE A B2B ── */}
+                    <Link
+                      to="/b2b"
+                      onClick={() => setIsMenuOpen(false)} // Cierra el menú al navegar
                       className="flex items-center px-4 py-3 text-[15px] font-semibold text-[#42BC0D] hover:bg-[#F4F6FB] transition-colors"
                     >
                       Ventas Corporativas
-                    </a>
+                    </Link>
                   </div>
-                </div>
-
+                </div>{" "}
+                {/* ← cierra flex-1 py-2 (Categorías) */}
                 {/* Footer: info + redes */}
                 <div className="border-t border-gray-100 p-4 bg-[#F4F6FB]">
                   <div className="flex flex-col gap-2 text-[12px] text-gray-500 mb-3">
