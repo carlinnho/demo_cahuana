@@ -1,6 +1,5 @@
 import React from "react";
 
-// Puedes reemplazar estas URLs de marcadores de posición con las rutas reales a tus imágenes en src/assets/
 const categories = [
   {
     name: "Cargadores",
@@ -44,12 +43,9 @@ const CategoryHighlights: React.FC = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6 text-center">
         {categories.map((cat) => (
           <a key={cat.name} href={cat.link} className="group block">
-            {/* Contenedor de la Tarjeta: 
-              - shadow-[0_4px_12px_rgba(0,0,0,0.05)] para el sombreado base
-              - Todo adentro (imagen + texto)
-            */}
-            <div className="relative w-full aspect-square bg-white rounded-2xl flex flex-col items-center justify-between p-4 transition-all duration-300 border border-gray-100 shadow-[0_4px_12px_rgba(0,0,0,0.05)] group-hover:border-[#42BC0D]/40 group-hover:shadow-[0_10px_30px_rgba(66,188,13,0.12)] overflow-hidden">
-              {/* Imagen (flex-1 para que empuje el texto hacia abajo) */}
+            {/* Contenedor: Cambiamos sombra y borde a colores neutros (gray) */}
+            <div className="relative w-full aspect-square bg-white rounded-2xl flex flex-col items-center justify-between p-4 transition-all duration-300 border border-gray-100 shadow-[0_4px_12px_rgba(0,0,0,0.05)] group-hover:border-gray-300 group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)] overflow-hidden">
+              {/* Imagen (mantiene el zoom) */}
               <div className="flex-1 w-full flex items-center justify-center min-h-0 mb-3">
                 <img
                   src={cat.image}
@@ -58,8 +54,8 @@ const CategoryHighlights: React.FC = () => {
                 />
               </div>
 
-              {/* Título de la Categoría en tamaño 12px */}
-              <span className="text-[12px] font-bold text-[#313131] group-hover:text-[#42BC0D] transition-colors leading-none">
+              {/* Título: Quitamos el hover verde, ahora se mantiene gris oscuro */}
+              <span className="text-[12px] font-bold text-[#313131] transition-colors leading-none">
                 {cat.name}
               </span>
             </div>
