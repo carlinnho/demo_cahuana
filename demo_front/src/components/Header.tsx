@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Search,
   User,
@@ -49,6 +50,15 @@ const Header: React.FC = () => {
     },
   ];
 
+  // Convertimos tu lista en objetos para asignarles la ruta a cada uno
+  const navItems = [
+    { name: "Repuestos", path: "/catalogo" },
+    { name: "Accesorios", path: "/catalogo" },
+    { name: "Vehículos", path: "/catalogo" },
+    { name: "Servicios de Importacion", path: "/" },
+    { name: "Ventas Corporativas", path: "/b2b" }, // <-- Aquí enlazamos tu nueva página
+  ];
+
   return (
     <header className="w-full font-sans border-b border-gray-100">
       {/* ── BARRA SUPERIOR INFO (solo desktop lg+) ── */}
@@ -76,7 +86,6 @@ const Header: React.FC = () => {
           </a>
         </div>
       </div>
-
       {/* ── CONTENEDOR STICKY ── */}
       <div className="sticky top-0 z-50 w-full bg-white shadow-sm">
         {/* ════ BARRA MOBILE + TABLET (< lg): [☰]  [LOGO]  [🔍] ════ */}
@@ -105,7 +114,6 @@ const Header: React.FC = () => {
             <Search size={22} />
           </button>
         </div>
-
         {/* Buscador expandible (mobile + tablet) */}
         {isMobileSearchOpen && (
           <div className="lg:hidden px-4 pb-3 pt-1 border-b border-gray-100">

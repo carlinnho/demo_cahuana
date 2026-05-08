@@ -52,18 +52,15 @@ const TikTokIcon = ({ className }: SocialIconProps) => (
   </svg>
 );
 
-const complaintsBookRoute = "/libro-reclamaciones";
-const storeAddress =
-  "Compuplaza, Tienda 315, Av. Garcilaso de la Vega 1251, Lima";
-const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  storeAddress,
-)}`;
+const complaintsBookRoute = "/reclamaciones";
+const storeAddress = "Compuplaza, Tienda 315, Av. Garcilaso de la Vega 1251, Lima";
+const mapsUrl = "https://maps.google.com"; // Simplificado para evitar errores de codificación
 
 const whatsappUrl = (phone: string, message: string) =>
   `https://wa.me/51${phone}?text=${encodeURIComponent(message)}`;
 
 const menuLinks = [
-  { label: "Nuestra historia", to: "/", icon: History },
+  { label: "Nuestra historia", to: "/sobre-nosotros", icon: History },
   { label: "Repuestos para laptop", to: "/catalogo", icon: Laptop },
   { label: "Servicio de importacion", to: "/b2b", icon: PackageCheck },
   { label: "Entrega nacional", to: "/checkout", icon: Truck },
@@ -91,7 +88,7 @@ const contactLinks = [
 const socialLinks = [
   {
     label: "Facebook",
-    href: "https://www.facebook.com/CahuanaPeru?locale=es_ES",
+    href: "https://www.facebook.com/CahuanaPeru",
     icon: FacebookIcon,
   },
   {
@@ -113,52 +110,31 @@ const Footer: React.FC = () => {
 
       <div className="relative mx-auto w-full max-w-[1480px] px-4 py-10 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-[minmax(320px,1.18fr)_minmax(190px,0.68fr)_minmax(290px,1fr)_minmax(290px,1fr)] xl:items-stretch xl:gap-12">
+          
+          {/* Branding */}
           <section className="flex h-full flex-col justify-between rounded-md border border-white/10 bg-white/[0.03] p-6 shadow-[0_18px_44px_rgba(0,0,0,0.28)] transition-all duration-300 hover:border-[#62c934]/35 hover:bg-white/[0.045] hover:shadow-[0_22px_52px_rgba(0,0,0,0.34)]">
             <div className="space-y-5">
-              <Link
-                to="/"
-                aria-label="Cahuana"
-                className="mx-auto block w-fit transition-transform duration-300 hover:-translate-y-0.5 xl:mx-auto"
-              >
-                <img
-                  src={logoBlanco}
-                  alt="Cahuana"
-                  className="h-auto w-40 max-w-full object-contain sm:w-48"
-                />
+              <Link to="/" className="mx-auto block w-fit transition-transform duration-300 hover:-translate-y-0.5 xl:mx-0">
+                <img src={logoBlanco} alt="Cahuana" className="h-auto w-40 object-contain sm:w-48" />
               </Link>
-
               <p className="mx-auto max-w-sm text-center text-sm leading-relaxed text-white/75 md:text-left xl:text-left">
-                Tecnologia, repuestos e importacion para clientes que buscan
-                calidad, respaldo y atencion especializada.
+                Tecnología, repuestos e importación para clientes que buscan calidad y atención especializada.
               </p>
-
               <div className="grid grid-cols-1 gap-3 text-xs font-semibold text-white min-[380px]:grid-cols-2">
-                <span className="flex min-w-0 items-center justify-center gap-2 rounded-md border border-white/10 bg-black/30 px-3 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#62c934]/50 md:justify-start">
-                  <ShieldCheck className="h-4 w-4 shrink-0 text-[#62c934]" />
-                  <span className="truncate">Garantia real</span>
+                <span className="flex items-center gap-2 rounded-md border border-white/10 bg-black/30 px-3 py-2 transition-all hover:border-[#62c934]/50">
+                  <ShieldCheck className="h-4 w-4 text-[#62c934]" /> Garantía real
                 </span>
-                <span className="flex min-w-0 items-center justify-center gap-2 rounded-md border border-white/10 bg-black/30 px-3 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#62c934]/50 md:justify-start">
-                  <Sparkles className="h-4 w-4 shrink-0 text-[#62c934]" />
-                  <span className="truncate">Stock confiable</span>
+                <span className="flex items-center gap-2 rounded-md border border-white/10 bg-black/30 px-3 py-2 transition-all hover:border-[#62c934]/50">
+                  <Sparkles className="h-4 w-4 text-[#62c934]" /> Stock confiable
                 </span>
               </div>
-
               <div className="flex flex-wrap items-center justify-center gap-3 pt-1 md:justify-start">
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
-
                   return (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      aria-label={social.label}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md border border-white/20 bg-black/35 text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#62c934] hover:text-black hover:shadow-[0_16px_34px_rgba(98,201,52,0.28)] active:translate-y-0"
-                    >
-                      <span className="absolute inset-0 translate-y-full bg-[#62c934] transition-transform duration-300 ease-out group-hover:translate-y-0" />
-                      <span className="absolute inset-0 opacity-0 ring-1 ring-inset ring-white/20 transition-opacity duration-300 group-hover:opacity-100" />
-                      <Icon className="relative z-10 h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                    <a key={social.label} href={social.href} target="_blank" rel="noreferrer" className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-md border border-white/20 bg-black/35 transition-all hover:-translate-y-1 hover:border-[#62c934] hover:text-black">
+                      <span className="absolute inset-0 translate-y-full bg-[#62c934] transition-transform group-hover:translate-y-0" />
+                      <Icon className="relative z-10 h-5 w-5" />
                     </a>
                   );
                 })}
@@ -166,31 +142,25 @@ const Footer: React.FC = () => {
             </div>
           </section>
 
+          {/* Sección Nosotros */}
           <section className="pt-1 lg:pt-2">
-            <Link
-              to="/"
-              className="group mb-4 block w-fit text-lg font-bold transition-all duration-200 hover:translate-x-1 hover:text-white"
-            >
+            <Link to="/sobre-nosotros" className="group mb-4 block w-fit text-lg font-bold hover:text-white">
               Nosotros
-              <span className="mt-2 block h-0.5 w-10 rounded-full bg-[#62c934] transition-all duration-300 group-hover:w-full" />
+              <span className="mt-2 block h-0.5 w-10 rounded-full bg-[#62c934] transition-all group-hover:w-full" />
             </Link>
             <ul className="space-y-2 text-sm text-white/80">
               {menuLinks.map((link) => {
                 const Icon = link.icon;
-
                 return (
                   <li key={link.label}>
-                    <Link
-                      to={link.to}
-                      className="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 transition-all duration-200 hover:translate-x-1 hover:bg-white/[0.05] hover:text-white"
-                    >
-                      <span className="flex min-w-0 items-center gap-2">
-                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#62c934]/15 text-[#62c934] transition-colors duration-200 group-hover:bg-[#62c934] group-hover:text-black">
+                    <Link to={link.to} className="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 transition-all hover:translate-x-1 hover:bg-white/[0.05]">
+                      <span className="flex items-center gap-2">
+                        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-[#62c934]/15 text-[#62c934] group-hover:bg-[#62c934] group-hover:text-black">
                           <Icon className="h-4 w-4" />
                         </span>
-                        <span className="min-w-0 break-words">{link.label}</span>
+                        <span>{link.label}</span>
                       </span>
-                      <ChevronRight className="h-3.5 w-3.5 shrink-0 text-[#62c934] opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100" />
+                      <ChevronRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100" />
                     </Link>
                   </li>
                 );
@@ -198,109 +168,50 @@ const Footer: React.FC = () => {
             </ul>
           </section>
 
+          {/* Sección Contacto */}
           <section className="pt-1 lg:pt-2">
-            <a
-              href={whatsappUrl(
-                "998904830",
-                "Hola Cahuana, quiero contactar con un asesor.",
-              )}
-              target="_blank"
-              rel="noreferrer"
-              className="group mb-4 block w-fit text-lg font-bold transition-all duration-200 hover:translate-x-1 hover:text-white"
-            >
+            <Link to="/contacto" className="group mb-4 block w-fit text-lg font-bold hover:text-white">
               Contacto
-              <span className="mt-2 block h-0.5 w-10 rounded-full bg-[#62c934] transition-all duration-300 group-hover:w-full" />
-            </a>
+              <span className="mt-2 block h-0.5 w-10 rounded-full bg-[#62c934] transition-all group-hover:w-full" />
+            </Link>
             <div className="space-y-2.5 text-sm text-white/85">
-              <a
-                href="mailto:ditec@cahuana.pe"
-                className="group flex items-center gap-3 rounded-md px-2 py-1.5 transition-all duration-200 hover:translate-x-1 hover:bg-white/[0.05] hover:text-white"
-              >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#62c934]/15 text-[#62c934] transition-colors duration-200 group-hover:bg-[#62c934] group-hover:text-black">
+              <a href="mailto:ditec@cahuana.pe" className="group flex items-center gap-3 rounded-md px-2 py-1.5 hover:translate-x-1 hover:bg-white/[0.05]">
+                <span className="flex h-7 w-7 items-center justify-center rounded-md bg-[#62c934]/15 text-[#62c934] group-hover:bg-[#62c934] group-hover:text-black">
                   <Mail className="h-4 w-4" />
                 </span>
-                <span className="min-w-0 break-all">ditec@cahuana.pe</span>
+                <span>ditec@cahuana.pe</span>
               </a>
               {contactLinks.map((contact) => (
-                <a
-                  key={contact.phone}
-                  href={whatsappUrl(contact.phone, contact.message)}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-center gap-3 rounded-md px-2 py-1.5 transition-all duration-200 hover:translate-x-1 hover:bg-white/[0.05] hover:text-white"
-                >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#62c934]/15 text-[#62c934] transition-colors duration-200 group-hover:bg-[#62c934] group-hover:text-black">
+                <a key={contact.phone} href={whatsappUrl(contact.phone, contact.message)} target="_blank" rel="noreferrer" className="group flex items-center gap-3 rounded-md px-2 py-1.5 hover:translate-x-1 hover:bg-white/[0.05]">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-md bg-[#62c934]/15 text-[#62c934] group-hover:bg-[#62c934] group-hover:text-black">
                     <Phone className="h-4 w-4" />
                   </span>
-                  <span className="min-w-0 break-words">{contact.label}</span>
+                  <span>{contact.label}</span>
                 </a>
               ))}
             </div>
           </section>
 
-          <section className="space-y-4 pt-1 lg:min-w-0 lg:pt-2">
-            <div className="space-y-4">
-              <a
-                href={mapsUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="group block w-fit text-lg font-bold text-white transition-all duration-200 hover:translate-x-1 hover:text-white"
-              >
-                Nuestra Tienda
-                <span className="mt-2 block h-0.5 w-10 rounded-full bg-[#62c934] transition-all duration-300 group-hover:w-full" />
-              </a>
-              <a
-                href={mapsUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-start gap-3 text-sm leading-relaxed text-white/85 transition-all duration-200 hover:translate-x-1 hover:text-white"
-              >
-                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#62c934]/15 text-[#62c934]">
-                  <MapPin className="h-4 w-4 fill-[#62c934]" />
-                </span>
-                {storeAddress}
-              </a>
-              <p className="flex items-center gap-3 text-sm text-white/85">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#62c934]/15 text-[#62c934]">
-                  <Clock3 className="h-4 w-4" />
-                </span>
-                L a S: 9:00am - 7:00pm
-              </p>
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                <a
-                  href={mapsUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-md bg-[#62c934] px-4 py-2 text-sm font-bold text-black transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_12px_24px_rgba(98,201,52,0.2)]"
-                >
-                  Como llegar
-                </a>
-              </div>
+          {/* Sección Tienda */}
+          <section className="space-y-4 pt-1 lg:pt-2">
+            <h4 className="text-lg font-bold">Nuestra Tienda</h4>
+            <div className="flex items-start gap-3 text-sm text-white/85">
+              <MapPin className="h-5 w-5 text-[#62c934] shrink-0" />
+              <span>{storeAddress}</span>
             </div>
-            <Link
-              to={complaintsBookRoute}
-              className="group flex w-full items-center gap-4 rounded-md border border-white/10 bg-white/[0.03] p-4 text-sm font-bold text-white shadow-[0_14px_36px_rgba(0,0,0,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#62c934]/45 hover:bg-white/[0.045] hover:text-white hover:shadow-[0_18px_42px_rgba(98,201,52,0.12)]"
-            >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#62c934]/15 text-[#dff5d7] transition-colors duration-300 group-hover:bg-[#62c934] group-hover:text-black">
-                <BookOpen className="h-7 w-7 transition-transform duration-300 group-hover:scale-110" />
-              </span>
-              <span className="flex min-w-0 flex-1 flex-col text-left leading-tight">
-                <span>Libro de</span>
-                <span>Reclamaciones</span>
-              </span>
-              <ChevronRight className="h-4 w-4 text-[#62c934] transition-transform duration-300 group-hover:translate-x-1" />
+            <div className="flex items-center gap-3 text-sm text-white/85">
+              <Clock3 className="h-5 w-5 text-[#62c934] shrink-0" />
+              <span>L a S: 9:00am - 7:00pm</span>
+            </div>
+            <Link to="/reclamaciones" className="group flex items-center gap-4 rounded-md border border-white/10 bg-white/[0.03] p-4 transition-all hover:border-[#62c934]/45">
+              <BookOpen className="h-7 w-7 text-[#62c934]" />
+              <span className="text-left font-bold">Libro de Reclamaciones</span>
             </Link>
           </section>
         </div>
 
-        <div className="mt-10 border-t border-white/15 pt-5 text-center text-xs font-semibold text-white md:flex md:items-center md:justify-between md:text-left">
-          <p>
-            Tu tienda especialista en repuestos, accesorios y productos de
-            tecnologia con envio a todo el Peru.
-          </p>
-          <p className="mt-3 md:mt-0">
-            &copy; 2026 Cahuana Sac. Todos los derechos reservados.
-          </p>
+        <div className="mt-10 border-t border-white/15 pt-5 text-center text-xs font-semibold text-white/60 md:flex md:justify-between">
+          <p>© 2026 Cahuana Sac. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

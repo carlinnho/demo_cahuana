@@ -7,6 +7,8 @@ import Catalogo from "./Pages/Catalogo";
 import DetalleProducto from "./Pages/DetalleProducto";
 import Checkout from "./Pages/checkout";
 import SeccionB2B from "./Pages/seccionB2B";
+import Contacto from "./Pages/contacto";
+import Nosotros from "./Pages/nosotros";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/producto/:id" element={<DetalleProducto />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/b2b" element={<SeccionB2B />} />
+            <Route path="/contacto" element={<Contacto />} /> {/* <-- 2. Añadimos la ruta */}
+            <Route path="/sobre-nosotros" element={<Nosotros />} />
           </Routes>
         </main>
         <Footer />
