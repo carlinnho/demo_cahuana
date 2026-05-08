@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, Globe, Ship, TrendingUp, CheckCircle, MapPin } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 

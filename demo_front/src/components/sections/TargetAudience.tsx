@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Building2, Cpu, BarChart3, Heart } from 'lucide-react';
 
 const AudienceCard = ({ icon: Icon, title, description, image, delay }: any) => (

@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from "framer-motion";
 import { Calendar, MessageCircle, ArrowRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 

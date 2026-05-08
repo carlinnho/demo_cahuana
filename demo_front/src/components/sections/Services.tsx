@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Search, Users, Settings, FileText, Gavel, Truck, HeartHandshake } from 'lucide-react';
 
 const Item = ({ title, delay, icon: Icon, isActive }: any) => (
