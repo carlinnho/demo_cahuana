@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Search,
   User,
@@ -127,7 +128,6 @@ const Header: React.FC = () => {
             <Search size={22} />
           </button>
         </div>
-
         {/* Buscador expandible (mobile + tablet) */}
         {isMobileSearchOpen && (
           <div className="lg:hidden px-4 pb-3 pt-1 border-b border-gray-100 bg-white">
