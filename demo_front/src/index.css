@@ -1,6 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap');
 @import "tailwindcss";
+
 @layer base {
   html {
     font-family: "Lato", sans-serif;
   }
+}
+
+/* ===== Inventario ===== */
+
+@theme {
+  --font-display: "Outfit", sans-serif;
+
+  --color-brand-primary: #42BC0D;
+  --color-brand-text: #313131;
+  --color-brand-bg: #F4F6FB;
+}
+
+.inventario-page {
+  font-family: "Inter", sans-serif;
+}
+
+.inventario-page h1,
+.inventario-page h2,
+.inventario-page h3,
+.inventario-page h4,
+.inventario-page h5,
+.inventario-page h6 {
+  font-family: "Outfit", sans-serif;
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
 }

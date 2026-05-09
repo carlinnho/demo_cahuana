@@ -95,7 +95,11 @@ const recommendedProducts = [
 ];
 
 // ─── 3. COMPONENTES DE UI FALTANTES (Input y Select) ───
-const Input = ({ label, ...props }: any) => (
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+}
+
+const Input = ({ label, ...props }: InputProps) => (
   <div className="flex flex-col gap-1.5">
     <label className="text-[13px] font-bold text-gray-700">{label}</label>
     <input
@@ -105,7 +109,12 @@ const Input = ({ label, ...props }: any) => (
   </div>
 );
 
-const Select = ({ label, children, ...props }: any) => (
+interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  label: string;
+  children?: React.ReactNode;
+}
+
+const Select = ({ label, children, ...props }: SelectProps) => (
   <div className="flex flex-col gap-1.5">
     <label className="text-[13px] font-bold text-gray-700">{label}</label>
     <select
@@ -245,28 +254,28 @@ const Checkout: React.FC = () => {
                 label="Nombre *"
                 placeholder="Ej. Luis"
                 value={form.firstName}
-                onChange={(e: any) => updateField("firstName", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField("firstName", e.target.value)}
                 required
               />
               <Input
                 label="Apellidos *"
                 placeholder="Ej. Cahuana Ramos"
                 value={form.lastName}
-                onChange={(e: any) => updateField("lastName", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField("lastName", e.target.value)}
                 required
               />
               <Input
                 label="DNI *"
                 placeholder="Ingresa tu DNI"
                 value={form.dni}
-                onChange={(e: any) => updateField("dni", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField("dni", e.target.value)}
                 required
               />
               <Input
                 label="Teléfono *"
                 placeholder="Número para coordinar"
                 value={form.phone}
-                onChange={(e: any) => updateField("phone", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField("phone", e.target.value)}
                 required
               />
               <div className="md:col-span-2">
@@ -275,7 +284,7 @@ const Checkout: React.FC = () => {
                   placeholder="correo@ejemplo.com"
                   type="email"
                   value={form.email}
-                  onChange={(e: any) => updateField("email", e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField("email", e.target.value)}
                   required
                 />
               </div>
@@ -299,7 +308,7 @@ const Checkout: React.FC = () => {
               <Select
                 label="País / Región *"
                 value={form.country}
-                onChange={(e: any) => updateField("country", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => updateField("country", e.target.value)}
                 required
               >
                 <option value="Peru">Perú</option>
@@ -307,7 +316,7 @@ const Checkout: React.FC = () => {
               <Select
                 label="Departamento *"
                 value={form.department}
-                onChange={(e: any) => updateField("department", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => updateField("department", e.target.value)}
                 required
               >
                 <option value="">Elige una opción...</option>
@@ -322,7 +331,7 @@ const Checkout: React.FC = () => {
                   label="Dirección de envío *"
                   placeholder="Av., calle, número, distrito y referencia"
                   value={form.shippingAddress}
-                  onChange={(e: any) =>
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     updateField("shippingAddress", e.target.value)
                   }
                   required
@@ -360,14 +369,14 @@ const Checkout: React.FC = () => {
                   label="RUC *"
                   placeholder="Ingresa el RUC"
                   value={form.ruc}
-                  onChange={(e: any) => updateField("ruc", e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField("ruc", e.target.value)}
                   required
                 />
                 <Input
                   label="Empresa *"
                   placeholder="Razón social"
                   value={form.company}
-                  onChange={(e: any) => updateField("company", e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateField("company", e.target.value)}
                   required
                 />
                 <div className="md:col-span-2">
@@ -375,7 +384,7 @@ const Checkout: React.FC = () => {
                     label="Dirección de facturación *"
                     placeholder="Dirección fiscal o dirección de facturación"
                     value={form.billingAddress}
-                    onChange={(e: any) =>
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                       updateField("billingAddress", e.target.value)
                     }
                     required

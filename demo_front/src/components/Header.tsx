@@ -217,7 +217,7 @@ const Header: React.FC = () => {
               {
                 name: "Servicios de Importacion",
                 hasDropdown: false,
-                path: "#",
+                path: "/inventario",
               },
               { name: "Ventas Corporativas", hasDropdown: false, path: "/b2b" }, // <-- Ruta B2B
             ].map((item) => (
@@ -318,9 +318,8 @@ const Header: React.FC = () => {
                         </span>
                         <ChevronDown
                           size={17}
-                          className={`text-gray-400 transition-transform duration-200 ${
-                            openCategory === cat.name ? "rotate-180" : ""
-                          }`}
+                          className={`text-gray-400 transition-transform duration-200 ${openCategory === cat.name ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
 
@@ -346,12 +345,13 @@ const Header: React.FC = () => {
 
                   {/* Resto de nav (Mobile) */}
                   <div className="border-t border-gray-100 mt-2 pt-2">
-                    <a
-                      href="#"
+                    <Link
+                      to="/inventario"
+                      onClick={() => setIsMenuOpen(false)}
                       className="flex items-center px-4 py-3 text-[15px] font-medium text-[#313131] hover:bg-[#F4F6FB] hover:text-[#42BC0D] transition-colors"
                     >
                       Servicios de Importación
-                    </a>
+                    </Link>
                     {/* ── ENLACE A B2B ── */}
                     <Link
                       to="/b2b"

@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
+import type { LucideIcon } from "lucide-react";
 import {
   Truck, Clock, ShieldCheck,
   Heart, ShoppingCart, ChevronRight,
   Shield, Minus, Plus, Zap, Battery, Wind, Move, Package,
   ChevronLeft, Smartphone, Check, ChevronDown
 } from "lucide-react";
-import { products, type Product } from "../data/products";
+import { products } from "../data/products";
 
 // Icon mapping helper
+interface ProductIconMap {
+  [key: string]: LucideIcon;
+}
+
 const getIcon = (name: string, size = 20, className = "text-[#42bc0d]") => {
-  const icons: Record<string, any> = {
+  const icons: ProductIconMap = {
     Truck, Clock, ShieldCheck, Heart, ShoppingCart,
     Shield, Minus, Plus, Zap, Battery, Wind, Move, Package, Smartphone, Check
   };
@@ -20,14 +25,15 @@ const getIcon = (name: string, size = 20, className = "text-[#42bc0d]") => {
 
 const DetalleProducto: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState("Descripción");
-  const [product, setProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = React.useState(1);
+  const [activeTab, setActiveTab] = React.useState("Descripción");
+
+  const product = useMemo(
+    () => products.find(p => p.id === id || p.slug === id) || products[0],
+    [id],
+  );
 
   useEffect(() => {
-    // Find product by id or slug
-    const found = products.find(p => p.id === id || p.slug === id) || products[0];
-    setProduct(found);
     window.scrollTo(0, 0);
   }, [id]);
 
