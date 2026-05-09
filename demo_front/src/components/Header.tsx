@@ -211,8 +211,8 @@ const Header: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-8 py-1 text-[14px] font-medium">
             {/* Añadimos la propiedad 'path' al arreglo */}
             {[
-              { name: "Repuestos", hasDropdown: true, path: "#" },
-              { name: "Accesorios", hasDropdown: true, path: "#" },
+              { name: "Repuestos", hasDropdown: true, path: "/catalogo" },
+              { name: "Accesorios", hasDropdown: true, path: "/catalogo" },
               { name: "Vehículos", hasDropdown: true, path: "#" },
               {
                 name: "Servicios de Importacion",
