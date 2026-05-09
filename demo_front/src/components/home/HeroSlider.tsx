@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Importamos la imagen desde tus assets
-import banner1 from "../../assets/Banner1.png";
+import banner1 from "../../assets/banner1.png";
 
 // Simulamos los 4 banners reciclando la misma imagen
 const slides = [
