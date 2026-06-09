@@ -24,7 +24,15 @@ const FacebookIcon = ({ className }: SocialIconProps) => (
 );
 
 const InstagramIcon = ({ className }: SocialIconProps) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -38,8 +46,10 @@ const TikTokIcon = ({ className }: SocialIconProps) => (
 );
 
 // --- CONFIGURACIÓN DE RUTAS Y LINKS ---
-const storeAddress = "Compuplaza, Tienda 315, Av. Garcilaso de la Vega 1251, Lima";
-const whatsappUrl = (phone: string, message: string) => `https://wa.me/51${phone}?text=${encodeURIComponent(message)}`;
+const storeAddress =
+  "Compuplaza, Tienda 315, Av. Garcilaso de la Vega 1251, Lima";
+const whatsappUrl = (phone: string, message: string) =>
+  `https://wa.me/51${phone}?text=${encodeURIComponent(message)}`;
 
 const menuLinks = [
   { label: "Nosotros", to: "/sobre-nosotros" },
@@ -52,36 +62,64 @@ const menuLinks = [
 
 const contactLinks = [
   { label: "ditec@cahuana.pe", icon: Mail, isEmail: true },
-  { label: "Atención web: 998 904 830", phone: "998904830", message: "Hola Cahuana, deseo información sobre una compra web." },
-  { label: "Mayoristas Lima: 968 851 302", phone: "968851302", message: "Hola Cahuana, deseo información para mayoristas." },
-  { label: "Mayoristas Prov.: 983 300 054", phone: "983300054", message: "Hola Cahuana, deseo información para provincias." },
-  { label: "Ventas Extranjeras: 960 706 162", phone: "960706162", message: "Hola Cahuana, información para ventas internacionales." },
+  {
+    label: "Atención web: 998 904 830",
+    phone: "998904830",
+    message: "Hola Cahuana, deseo información sobre una compra web.",
+  },
+  {
+    label: "Mayoristas Lima: 968 851 302",
+    phone: "968851302",
+    message: "Hola Cahuana, deseo información para mayoristas.",
+  },
+  {
+    label: "Mayoristas Prov.: 983 300 054",
+    phone: "983300054",
+    message: "Hola Cahuana, deseo información para provincias.",
+  },
+  {
+    label: "Ventas Extranjeras: 960 706 162",
+    phone: "960706162",
+    message: "Hola Cahuana, información para ventas internacionales.",
+  },
 ];
 
 const socialLinks = [
-  { label: "Facebook", href: "https://facebook.com/CahuanaPeru", icon: FacebookIcon },
-  { label: "Instagram", href: "https://instagram.com/cahuana_sac/", icon: InstagramIcon },
+  {
+    label: "Facebook",
+    href: "https://facebook.com/CahuanaPeru",
+    icon: FacebookIcon,
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/cahuana_sac/",
+    icon: InstagramIcon,
+  },
   { label: "TikTok", href: "https://tiktok.com/@cahuanasac", icon: TikTokIcon },
 ];
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#0a0a0a] text-white">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#292929] text-white">
       {/* Línea de neón superior */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#62c934] to-transparent opacity-50" />
 
       <div className="relative mx-auto w-full max-w-[1480px] px-6 py-12 lg:px-12">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr_1fr] lg:gap-8">
-          
           {/* BLOQUE 1: Branding y Certificaciones (Replica exacta de la imagen) */}
-          <section className="space-y-6 rounded-2xl border border-white/5 bg-white/[0.02] p-8 shadow-2xl">
+          <section className="space-y-6 rounded-2xl border border-white/5 bg-white/[0.06] p-8 shadow-2xl">
             <Link to="/" className="block">
-              <img src={logoBlanco} alt="Cahuana Logo" className="h-auto w-44" />
+              <img
+                src={logoBlanco}
+                alt="Cahuana Logo"
+                className="h-auto w-44"
+              />
             </Link>
             <p className="text-sm leading-relaxed text-white/60">
-              Tecnología, repuestos e importación para clientes que buscan calidad, respaldo y atención especializada.
+              Tecnología, repuestos e importación para clientes que buscan
+              calidad, respaldo y atención especializada.
             </p>
-            
+
             {/* Badges de Garantía */}
             <div className="grid grid-cols-2 gap-2">
               <div className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] py-2.5 text-[10px] font-bold uppercase tracking-wider transition-all hover:border-[#62c934]/40 hover:bg-white/[0.05]">
@@ -97,11 +135,11 @@ const Footer: React.FC = () => {
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
-                  <a 
-                    key={social.label} 
-                    href={social.href} 
-                    target="_blank" 
-                    rel="noreferrer" 
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/[0.05] text-white/70 transition-all hover:-translate-y-1 hover:bg-[#62c934] hover:text-black hover:shadow-[0_4px_12px_rgba(98,201,52,0.3)]"
                   >
                     <Icon className="h-5 w-5" />
@@ -120,8 +158,8 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               {menuLinks.map((link) => (
                 <li key={link.label}>
-                  <Link 
-                    to={link.to} 
+                  <Link
+                    to={link.to}
                     className="text-sm text-white/50 transition-colors hover:text-white"
                   >
                     {link.label}
@@ -139,15 +177,23 @@ const Footer: React.FC = () => {
             </h4>
             <div className="space-y-5">
               {contactLinks.map((item, idx) => (
-                <a 
-                  key={idx} 
-                  href={item.isEmail ? `mailto:${item.label}` : whatsappUrl(item.phone!, item.message!)}
+                <a
+                  key={idx}
+                  href={
+                    item.isEmail
+                      ? `mailto:${item.label}`
+                      : whatsappUrl(item.phone!, item.message!)
+                  }
                   target="_blank"
                   rel="noreferrer"
                   className="group flex items-center gap-3 text-sm text-white/50 transition-colors hover:text-white"
                 >
                   <span className="text-[#62c934] transition-transform group-hover:scale-110">
-                    {item.isEmail ? <Mail className="h-4 w-4" /> : <Phone className="h-4 w-4" />}
+                    {item.isEmail ? (
+                      <Mail className="h-4 w-4" />
+                    ) : (
+                      <Phone className="h-4 w-4" />
+                    )}
                   </span>
                   {item.label}
                 </a>
@@ -179,29 +225,30 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Botón Cómo Llegar con efecto */}
-            <a 
-              href="https://maps.google.com" 
-              target="_blank" 
-              rel="noreferrer" 
+            <a
+              href="https://maps.google.com"
+              target="_blank"
+              rel="noreferrer"
               className="flex w-full items-center justify-center rounded-xl bg-[#62c934] py-3 text-sm font-bold uppercase tracking-widest text-black transition-all hover:bg-white hover:shadow-[0_4px_15px_rgba(255,255,255,0.2)]"
             >
               Cómo llegar
             </a>
 
             {/* Libro Reclamaciones con efecto */}
-            <Link 
-              to="/reclamaciones" 
+            <Link
+              to="/reclamaciones"
               className="group flex w-full items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3 transition-all hover:border-white/20 hover:bg-white/[0.06]"
             >
               <div className="flex items-center gap-3">
                 <BookOpen className="h-5 w-5 text-[#62c934]" />
-                <span className="text-xs font-bold uppercase tracking-tighter">Libro Reclamaciones</span>
+                <span className="text-xs font-bold uppercase tracking-tighter">
+                  Libro Reclamaciones
+                </span>
               </div>
               <ChevronRight className="h-4 w-4 text-white/30 transition-transform group-hover:translate-x-1" />
             </Link>
           </section>
         </div>
-
       </div>
     </footer>
   );
